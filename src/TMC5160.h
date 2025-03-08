@@ -222,7 +222,7 @@ public:
 	TMC5160_SPI( uint8_t chipSelectPin,	// pin to use for the SPI bus SS line
 		uint32_t fclk = DEFAULT_F_CLK,
 		const SPISettings &spiSettings = SPISettings(4000000, MSBFIRST, SPI_MODE3), // spi bus settings to use (max SCK frequency of 4Mhz)
-		SPIClass& spi = SPI ); // spi class to use
+		SPIClass* spi = &SPI ); // spi class to use
 
 	uint32_t readRegister(uint8_t address);	// addresses are from TMC5160.h
 	uint8_t  writeRegister(uint8_t address, uint32_t data);
