@@ -58,7 +58,7 @@ uint32_t TMC5160_SPI::readRegister(uint8_t address)
 	#ifdef TEENSYDUINO
 	delayNanoseconds(2 * 1000000000 / _fclk + 10);
 	#else
-	delayMicroseconds(1);
+	delayMicroseconds(2);
 	#endif
 
 	// read it in the second cycle
