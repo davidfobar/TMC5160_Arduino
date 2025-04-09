@@ -145,6 +145,15 @@ float TMC5160::getCurrentPosition()
 		return (float)uStepPos / (float)_uStepCount;
 }
 
+int TMC5160::getCurrentMircostep()
+{
+  /*
+   * Return the current microstep position (0 to uStepCount-1) for the current position.
+   * This can be used to get the exact microstep position of the motor.
+   */
+  return readRegister(TMC5160_Reg::XACTUAL);
+}
+
 float TMC5160::getEncoderPosition()
 {
 	int32_t uStepPos = readRegister(TMC5160_Reg::X_ENC);
@@ -213,6 +222,14 @@ void TMC5160::setCurrentPosition(float position, bool updateEncoderPos)
 void TMC5160::setTargetPosition(float position)
 {
 	writeRegister(TMC5160_Reg::XTARGET, (int32_t)(position * (float)_uStepCount));
+}
+
+void TMC5160::setTargetMicrostep(int microstep)
+{
+  /*
+   * Set the target microstep position (0 to uStepCount-1). This can be used to set the target position in microsteps directly.
+   */
+  writeRegister(TMC5160_Reg::XTARGET, microstep);
 }
 
 void TMC5160::setMaxSpeed(float speed)
