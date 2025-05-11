@@ -112,6 +112,14 @@ void TMC5160::end()
 bool TMC5160::isLastReadSuccessful()
 {
 	return _lastRegisterReadSuccess;
+}.
+
+void TMC5160::setIrun(uint8_t irun)
+{
+  TMC5160_Reg::IHOLD_IRUN_Register iholdrun = { 0 };
+  iholdrun.ihold = constrain(iholdrun.ihold, 0, 31);
+  iholdrun.irun = constrain(irun, 0, 31);
+  writeRegister(TMC5160_Reg::IHOLD_IRUN, iholdrun.value);
 }
 
 void TMC5160::setRampMode(TMC5160::RampMode mode)
