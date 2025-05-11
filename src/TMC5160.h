@@ -114,6 +114,8 @@ public:
 	void setRampSpeeds(float startSpeed, float stopSpeed, float transitionSpeed); // Set the ramp start speed VSTART, ramp stop speed VSTOP, acceleration transition speed V1 (steps / second). /!\ Set VSTOP >= VSTART, VSTOP >= 0.1
 	void setAcceleration(float maxAccel); // Set the ramp acceleration / deceleration (steps / second^2)
 	void setAccelerations(float maxAccel, float maxDecel, float startAccel, float finalDecel); // Set the ramp accelerations AMAX, DMAX, A1, D1 (steps / second^2) /!\ Do not set finalDecel to 0 even if transitionSpeed = 0
+	 void setIrun(uint8_t irun); // Set the motor run current (0 to 31). For best performance don't set lower than 16
+
 
 	bool isTargetPositionReached(void); // Return true if the target position has been reached
 	bool isTargetVelocityReached(void); // Return true if the target velocity has been reached
